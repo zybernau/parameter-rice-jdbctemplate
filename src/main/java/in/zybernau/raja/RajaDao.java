@@ -33,8 +33,10 @@ public class RajaDao {
     // String query = "delete from test_table where dob > '1983-01-01' ";
     // String query = "DELETE FROM test_table WHERE lupd > now() - ':day'::interval ";
 
-    // String query = "DELETE FROM test_table WHERE lupd > DATE(now() - INTERVAL '? days') ";
-    String query = "DELETE FROM test_table WHERE lupd > DATE(now() - ? * INTERVAL '1 days') ";
+    // String query = "DELETE FROM test_table WHERE lupd > DATE(now() - INTERVAL '? days') "; // error
+    // String query = "DELETE FROM test_table WHERE lupd > DATE(now() - ? * INTERVAL '1 days') "; // working
+    // String query = "DELETE FROM test_table WHERE lupd > CURRENT_TIMESTAMP - ? * INTERVAL '1 days' "; // Also Working
+    String query = "DELETE FROM test_table WHERE lupd > CURRENT_TIMESTAMP - ? * INTERVAL '1 days' ";
     // String queryConcat = String.format("DELETE FROM test_table WHERE lupd < DATE(now() - INTERVAL '%s days')", param);
     String queryConcat = String.format("DELETE FROM test_table WHERE lupd < DATE(CURRENT_TIMESTAMP - INTERVAL '%s days')", param);
 
